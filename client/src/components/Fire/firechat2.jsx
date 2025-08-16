@@ -657,7 +657,7 @@ function WaterDashboard({ data, deviceData, lastUpdate, onPumpControl, onResetUs
           <div className="fw-bold fs-4">Complete Real-time Telemetry</div>
           
           {/* Flow Meters Section */}
-          <div className="mt-3">
+          {/* <div className="mt-3">
             <h5 className="text-primary mb-3">💧 Flow Meters & Billing</h5>
             <div className="row g-3">
               <div className="col-12 col-lg-6">
@@ -714,7 +714,164 @@ function WaterDashboard({ data, deviceData, lastUpdate, onPumpControl, onResetUs
                 </div>
               </div>
             </div>
+
+            <div className="row g-3">
+            <div className="col-12 col-lg-6">
+              <div className="bg-white rounded-4 shadow-sm p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div className="d-flex align-items-center">
+                    <div className="rounded-3 bg-info bg-opacity-10 p-2 me-3">
+                      <i className="bi bi-droplet-fill text-info fs-4"></i>
+                    </div>
+                    <div>
+                      <h6 className="mb-0">Flow Meter 2</h6>
+                      <small className="text-secondary">Secondary Water Line</small>
+                    </div>
+                  </div>
+                  <button 
+                    className="btn btn-outline-warning btn-sm"
+                    onClick={() => onResetUsage(2)}
+                    disabled={controlLoading}
+                  >
+                    {controlLoading ? <i className="bi bi-hourglass-split"></i> : <i className="bi bi-arrow-counterclockwise"></i>}
+                  </button>
+                </div>
+                <div className="row g-3">
+                  <div className="col-6">
+                    <div className="text-secondary small">Total Liters</div>
+                    <div className="fw-bold fs-5">{deviceData?.telemetry?.flow2?.total_liters?.toFixed(3) || 0}L</div>
+                  </div>
+                  <div className="col-6">
+                    <div className="text-secondary small">Current LPM</div>
+                    <div className="fw-bold fs-5">{deviceData?.telemetry?.flow2?.lpm || 0}</div>
+                  </div>
+                  <div className="col-6">
+                    <div className="text-secondary small">Price/Liter</div>
+                    <div className="fw-bold">৳{deviceData?.telemetry?.flow2?.price_per_liter || 0}</div>
+                  </div>
+                  <div className="col-6">
+                    <div className="text-secondary small">Total Bill</div>
+                    <div className="fw-bold text-success">৳{deviceData?.telemetry?.flow2?.total_bill?.toFixed(3) || 0}</div>
+                  </div>
+                </div>
+                {deviceData?.control?.reset_usage2 && (
+                  <div className="alert alert-warning mt-2 mb-0 py-2">
+                    <i className="bi bi-exclamation-triangle me-1"></i>
+                    Reset pending...
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
+          </div> */}
+{/* Flow Meters Section */}
+<div className="mt-3">
+  <h5 className="text-primary mb-3">💧 Flow Meters & Billing</h5>
+  <div className="row g-3">
+    {/* Flow Meter 1 */}
+    <div className="col-12 col-lg-6">
+      <div className="bg-white rounded-4 shadow-sm p-4">
+        <div className="d-flex align-items-center justify-content-between mb-3">
+          <div className="d-flex align-items-center">
+            <div className="rounded-3 bg-primary bg-opacity-10 p-2 me-3">
+              <i className="bi bi-droplet-fill text-primary fs-4"></i>
+            </div>
+            <div>
+              <h6 className="mb-0">Flow Meter 1</h6>
+              <small className="text-secondary">Primary Water Line</small>
+            </div>
+          </div>
+          <button 
+            className="btn btn-outline-warning btn-sm"
+            onClick={() => onResetUsage(1)}
+            disabled={controlLoading}
+          >
+            {controlLoading ? <i className="bi bi-hourglass-split"></i> : <i className="bi bi-arrow-counterclockwise"></i>}
+          </button>
+        </div>
+        <div className="row g-3">
+          <div className="col-6">
+            <div className="text-secondary small">Total Liters</div>
+            <div className="fw-bold fs-5">{deviceData?.telemetry?.flow1?.total_liters?.toFixed(3) || 0}L</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Current LPM</div>
+            <div className="fw-bold fs-5">{deviceData?.telemetry?.flow1?.lpm || 0}</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Price/Liter</div>
+            <div className="fw-bold">৳{deviceData?.telemetry?.flow1?.price_per_liter || 0}</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Total Bill</div>
+            <div className="fw-bold text-success">৳{deviceData?.telemetry?.flow1?.total_bill?.toFixed(3) || 0}</div>
+          </div>
+          <div className="col-12">
+            <div className="text-secondary small">Legacy Values</div>
+            <div className="d-flex gap-3">
+              <span>LPM: <strong>{deviceData?.telemetry?.flow1_lpm || 0}</strong></span>
+              <span>Total: <strong>{deviceData?.telemetry?.total1_liters || 0}L</strong></span>
+            </div>
+          </div>
+        </div>
+        {deviceData?.control?.reset_usage1 && (
+          <div className="alert alert-warning mt-2 mb-0 py-2">
+            <i className="bi bi-exclamation-triangle me-1"></i>
+            Reset pending...
+          </div>
+        )}
+      </div>
+    </div>
+
+    {/* Flow Meter 2 */}
+    <div className="col-12 col-lg-6">
+      <div className="bg-white rounded-4 shadow-sm p-4">
+        <div className="d-flex align-items-center justify-content-between mb-3">
+          <div className="d-flex align-items-center">
+            <div className="rounded-3 bg-info bg-opacity-10 p-2 me-3">
+              <i className="bi bi-droplet-fill text-info fs-4"></i>
+            </div>
+            <div>
+              <h6 className="mb-0">Flow Meter 2</h6>
+              <small className="text-secondary">Secondary Water Line</small>
+            </div>
+          </div>
+          <button 
+            className="btn btn-outline-warning btn-sm"
+            onClick={() => onResetUsage(2)}
+            disabled={controlLoading}
+          >
+            {controlLoading ? <i className="bi bi-hourglass-split"></i> : <i className="bi bi-arrow-counterclockwise"></i>}
+          </button>
+        </div>
+        <div className="row g-3">
+          <div className="col-6">
+            <div className="text-secondary small">Total Liters</div>
+            <div className="fw-bold fs-5">{deviceData?.telemetry?.flow2?.total_liters?.toFixed(3) || 0}L</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Current LPM</div>
+            <div className="fw-bold fs-5">{deviceData?.telemetry?.flow2?.lpm || 0}</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Price/Liter</div>
+            <div className="fw-bold">৳{deviceData?.telemetry?.flow2?.price_per_liter || 0}</div>
+          </div>
+          <div className="col-6">
+            <div className="text-secondary small">Total Bill</div>
+            <div className="fw-bold text-success">৳{deviceData?.telemetry?.flow2?.total_bill?.toFixed(3) || 0}</div>
+          </div>
+        </div>
+        {deviceData?.control?.reset_usage2 && (
+          <div className="alert alert-warning mt-2 mb-0 py-2">
+            <i className="bi bi-exclamation-triangle me-1"></i>
+            Reset pending...
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
 
           {/* Sensors Section */}
           <div className="mt-4">
